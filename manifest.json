@@ -1,6 +1,7 @@
 {
     "name": "Flavien Informatique",
     "short_name": "Flavien Info",
+    "id": "/",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
@@ -20,6 +21,18 @@
             "src": "apple-touch-icon.png",
             "sizes": "180x180",
             "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot1.png",
+            "type": "image/png",
+            "sizes": "1280x720"
+        },
+        {
+            "src": "screenshot2.png",
+            "type": "image/png",
+            "sizes": "1280x720"
         }
     ]
 }
