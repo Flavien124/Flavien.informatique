@@ -27,8 +27,7 @@
         {
             "src": "screenshot1.png",
             "type": "image/png",
-            "sizes": "1280x720",
-			"form_factor": "wide"
+            "sizes": "1280x720"
         },
         {
             "src": "screenshot2.png",
