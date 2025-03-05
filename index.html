@@ -69,6 +69,10 @@
             background-color: #59A8DE;
             color: white;
         }
+        .about ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
     </style>
 </head>
 <body>
@@ -91,7 +95,7 @@
     </div>
 </div>
 
-    <div class="hours">
+<div class="hours">
     <h3>Horaires d'ouverture</h3>
     <table>
         <tr>
@@ -106,59 +110,20 @@
         <tr><td>Samedi</td><td>9h00 - 12h00</td></tr>
         <tr><td>Dimanche</td><td>Fermé</td></tr>
     </table>
-<div class="about">
-    <h3>Réparation et Assistance Informatique – Un Service Fiable et Efficace</h3>
-    <p>Besoin d’une solution rapide et efficace pour votre ordinateur ou votre téléphone ? Avec plusieurs années d’expérience en dépannage, maintenance et reconditionnement, je vous propose un service personnalisé, adapté aux particuliers comme aux professionnels.</p>
-    <p><strong>Ce que je propose :</strong></p>
-    <ul>
-        <li>✔ Dépannage matériel et logiciel : remplacement de composants, installation de SSD, suppression de virus…</li>
-        <li>✔ Assistance et conseils : un accompagnement clair, sans jargon technique.</li>
-        <li>✔ Reconditionnement d’appareils : une alternative économique et écologique.</li>
-        <li>✔ Location d’appareils : restez opérationnel même en cas de panne.</li>
-    </ul>
+    <div class="about">
+        <h3>Réparation et Assistance Informatique – Un Service Fiable et Efficace</h3>
+        <p>Besoin d’une solution rapide et efficace pour votre ordinateur ou votre téléphone ? Avec plusieurs années d’expérience en dépannage, maintenance et reconditionnement, je vous propose un service personnalisé, adapté aux particuliers comme aux professionnels.</p>
+        <p><strong>Ce que je propose :</strong></p>
+        <ul>
+            <li>✔ Dépannage matériel et logiciel : remplacement de composants, installation de SSD, suppression de virus…</li>
+            <li>✔ Assistance et conseils : un accompagnement clair, sans jargon technique.</li>
+            <li>✔ Reconditionnement d’appareils : une alternative économique et écologique.</li>
+            <li>✔ Location d’appareils : restez opérationnel même en cas de panne.</li>
+        </ul>
+    </div>
 </div>
 
-</div>
-
-    <button id="installButton">➕ Ajouter à l'écran d'accueil</button>
-
-<script>
-    let deferredPrompt;
-    window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        document.getElementById("installButton").style.display = "block";
-    });
-
-    document.getElementById("installButton").addEventListener("click", () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-        }
-    });
-
-    document.getElementById("shareButton").addEventListener("click", async () => {
-        if (navigator.share) {
-            try {
-                await navigator.share({
-                    title: "Flavien Informatique",
-                    text: "Découvrez l'application de Flavien Informatique !",
-                    url: window.location.href
-                });
-                console.log("Partage réussi !");
-            } catch (error) {
-                console.error("Erreur lors du partage :", error);
-            }
-        } else {
-            alert("Le partage n'est pas pris en charge sur votre appareil.");
-        }
-    });
-
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/Flavien.informatique/sw.js')
-            .then(() => console.log("Service Worker enregistré !"))
-            .catch(err => console.error("Erreur Service Worker :", err));
-    }
-</script>
+<button id="installButton">➕ Ajouter à l'écran d'accueil</button>
 
 </body>
 </html>
