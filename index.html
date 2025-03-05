@@ -121,9 +121,26 @@
             <li>✔ Location d’appareils : restez opérationnel même en cas de panne.</li>
         </ul>
     </div>
+
+<div id="cgvSection" style="display: none; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; text-align: left;">
+    <h3>Conditions Générales de Vente</h3>
+    <p>Vos conditions générales de vente seront affichées ici.</p>
+</div>
+
 </div>
 
 <button id="installButton">➕ Ajouter à l'écran d'accueil</button>
+
+<script>
+    document.getElementById("toggleCGV").addEventListener("click", function() {
+        let cgvSection = document.getElementById("cgvSection");
+        if (cgvSection.style.display === "none") {
+            cgvSection.style.display = "block";
+        } else {
+            cgvSection.style.display = "none";
+        }
+    });
+</script>
 
 </body>
 </html>
