@@ -36,7 +36,7 @@
         h1, h2 {
             color: #59A8DE;
         }
-        .contact-buttons a {
+        .contact-buttons a, button {
             display: block;
             margin: 10px;
             padding: 10px;
@@ -44,8 +44,10 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            cursor: pointer;
+            border: none;
         }
-        .contact-buttons a:hover {
+        .contact-buttons a:hover, button:hover {
             background-color: #4288c3;
         }
         .hours {
@@ -57,12 +59,6 @@
         }
         #installButton {
             display: none;
-            padding: 10px 20px;
-            background-color: #59A8DE;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
             margin-top: 15px;
         }
     </style>
@@ -82,6 +78,7 @@
         <a href="tel:+33661576161">📞 Appeler</a>
         <a href="sms:+33661576161">📩 Envoyer un SMS</a>
         <a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank">📍 Voir sur la carte</a>
+        <button id="shareButton">📤 Partager cette application</button>
     </div>
 
     <div class="hours">
@@ -104,6 +101,23 @@
     document.getElementById("installButton").addEventListener("click", () => {
         if (deferredPrompt) {
             deferredPrompt.prompt();
+        }
+    });
+
+    document.getElementById("shareButton").addEventListener("click", async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: "Flavien Informatique",
+                    text: "Découvrez l'application de Flavien Informatique !",
+                    url: window.location.href
+                });
+                console.log("Partage réussi !");
+            } catch (error) {
+                console.error("Erreur lors du partage :", error);
+            }
+        } else {
+            alert("Le partage n'est pas pris en charge sur votre appareil.");
         }
     });
 
