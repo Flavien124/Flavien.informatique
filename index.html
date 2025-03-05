@@ -73,6 +73,12 @@
             list-style-type: none;
             padding-left: 0;
         }
+    .buttons-install {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -122,6 +128,8 @@
         </ul>
     </div>
 
+
+
 <div id="cgvSection" style="display: none; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; text-align: left;">
     <h3>Conditions Générales de Vente</h3>
     <p>Vos conditions générales de vente seront affichées ici.</p>
@@ -129,7 +137,11 @@
 
 </div>
 
-<button id="installButton">➕ Ajouter à l'écran d'accueil</button>
+<div class="buttons-install">
+    <button id="toggleCGV">📜 Conditions Générales de Vente</button>
+    <button id="installButton">➕ Ajouter à l'écran d'accueil</button>
+    
+</div>
 
 <script>
     document.getElementById("toggleCGV").addEventListener("click", function() {
