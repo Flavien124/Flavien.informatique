@@ -177,6 +177,33 @@
 .contact-form button:hover {
     background-color: #4288c3;
 }
+.contact-form table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+.contact-form td {
+    padding: 10px;
+    text-align: left;
+    width: 50%; /* Ajuste la largeur pour un bon alignement */
+}
+@media (prefers-color-scheme: dark) {
+    .contact-form {
+        background: #2a2a2a; /* Fond plus foncé pour le mode sombre */
+        color: #ffffff;
+    }
+
+    .contact-form input, .contact-form textarea {
+        background-color: #333333;
+        color: #ffffff;
+        border: 1px solid #555555;
+    }
+
+    .contact-form label {
+        color: #ffffff;
+    }
+}
 
 </style>
 </head>
