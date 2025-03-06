@@ -128,6 +128,11 @@
 
 <div class="hours">
     <h3>Horaires d'ouverture</h3>
+
+    <div id="statutHoraire" style="margin-top:15px; font-size:18px; font-weight:bold;">
+        Actuellement : <span id="statutTexte">Chargement...</span>
+    </div>
+
     <table>
         <tr>
             <th>Jour</th>
@@ -141,46 +146,44 @@
         <tr><td>Samedi</td><td>9h00 - 12h00</td></tr>
         <tr><td>Dimanche</td><td>Fermé</td></tr>
     </table>
-	<div id="statutHoraire" style="margin-top:15px; font-size:18px; font-weight:bold;">
-    Statut : <span id="statutTexte">Chargement...</span>
-</div>
-<script>
-    function actualiserStatut() {
-        const maintenant = new Date();
-        const jour = maintenant.getDay(); // 0=dimanche, 1=lundi...
-        const heure = maintenant.getHours();
-        const minutes = maintenant.getMinutes();
-        const tempsActuel = heure * 60 + minutes;
 
-        let statutTexte = document.getElementById("statutTexte");
-        let statut = "";
-        let classe = "";
+    <script>
+        function actualiserStatut() {
+            const maintenant = new Date();
+            const jour = maintenant.getDay();
+            const heure = maintenant.getHours();
+            const minutes = maintenant.getMinutes();
+            const tempsActuel = heure * 60 + minutes;
 
-        if (jour === 0 || jour === 3) { // Dimanche et mercredi
-            statut = "Fermé";
-            classe = "ferme";
-        } else if (jour === 6 && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) { // Samedi matin
-            statut = "Ouvert";
-            classe = "ouvert";
-        } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) { // Matins semaine sauf mercredi
-            statut = "Ouvert";
-            classe = "ouvert";
-        } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 12 * 60 && tempsActuel < 18 * 60) { // Après-midi en semaine
-            statut = "Intervention à domicile";
-            classe = "domicile";
-        } else {
-            statut = "Fermé";
-            classe = "ferme";
+            let statutTexte = document.getElementById("statutTexte");
+            let statut = "";
+            let classe = "";
+
+            if (jour === 0 || jour === 3) {
+                statut = "Fermé";
+                classe = "ferme";
+            } else if (jour === 6 && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) {
+                statut = "Ouvert";
+                classe = "ouvert";
+            } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) {
+                statut = "Ouvert";
+                classe = "ouvert";
+            } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 12 * 60 && tempsActuel < 18 * 60) {
+                statut = "Intervention à domicile";
+                classe = "domicile";
+            } else {
+                statut = "Fermé";
+                classe = "ferme";
+            }
+
+            statutTexte.textContent = statut;
+            statutTexte.className = classe;
         }
 
-        statutTexte.textContent = statut;
-        statutTexte.className = classe;
-    }
+        actualiserStatut();
+        setInterval(actualiserStatut, 60000);
+    </script>
 
-    // actualiser immédiatement et chaque minute
-    actualiserStatut();
-    setInterval(actualiserStatut, 60000);
-</script>
 </div>
 
 <div class="about">
