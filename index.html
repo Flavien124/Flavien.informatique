@@ -73,7 +73,7 @@
             list-style-type: none;
             padding-left: 0;
         }
-    .buttons-install {
+        .buttons-install {
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -116,41 +116,36 @@
         <tr><td>Samedi</td><td>9h00 - 12h00</td></tr>
         <tr><td>Dimanche</td><td>Fermé</td></tr>
     </table>
-    <div class="about">
-        <h3>Réparation et assistance informatique un service fiable et efficace</h3>
-        <p>Besoin d’une solution rapide et efficace pour votre ordinateur ou votre téléphone ? Avec plusieurs années d’expérience en dépannage, maintenance et reconditionnement, je vous propose un service personnalisé, adapté aux particuliers comme aux professionnels.</p>
-        <p><strong>Ce que je propose :</strong></p>
-        <ul>
-            <li>✔ Dépannage matériel et logiciel : remplacement de composants, installation de SSD, suppression de virus…</li>
-            <li>✔ Assistance et conseils : un accompagnement clair, sans jargon technique.</li>
-            <li>✔ Reconditionnement d’appareils : une alternative économique et écologique.</li>
-            <li>✔ Location d’appareils : restez opérationnel même en cas de panne.</li>
-        </ul>
-    </div>
-
-
-
-<div id="cgvSection" style="display: none; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; text-align: left;">
-    <h3>Conditions Générales de Vente</h3>
-    <p>Vos conditions générales de vente seront affichées ici.</p>
 </div>
 
+<div class="about">
+    <h3>Réparation et assistance informatique un service fiable et efficace</h3>
+    <p>Besoin d’une solution rapide et efficace pour votre ordinateur ou votre téléphone ? Avec plusieurs années d’expérience en dépannage, maintenance et reconditionnement, je vous propose un service personnalisé, adapté aux particuliers comme aux professionnels.</p>
+    <p><strong>Ce que je propose :</strong></p>
+    <ul>
+        <li>✔ Dépannage matériel et logiciel : remplacement de composants, installation de SSD, suppression de virus…</li>
+        <li>✔ Assistance et conseils : un accompagnement clair, sans jargon technique.</li>
+        <li>✔ Reconditionnement d’appareils : une alternative économique et écologique.</li>
+        <li>✔ Location d’appareils : restez opérationnel même en cas de panne.</li>
+    </ul>
+</div>
+
+<div id="cgvSection" style="display:none;">
+    <h3>Conditions Générales de Vente</h3>
+    <p><strong>PRÉAMBULE :</strong><br>
+    Ces présentes conditions générales de vente font référence aux prestations de l’auto-entreprise Flavien Informatique, représentée par Monsieur BEAUCE Flavien.<br>
+    Toute commande auprès de Flavien Informatique est subordonnée à l’adhésion du CLIENT aux présentes Conditions Générales.</p>
 </div>
 
 <div class="buttons-install">
     <button id="toggleCGV">📜 Conditions Générales de Vente</button>
     <button id="installButton">➕ Ajouter à l'écran d'accueil</button>
-    
 </div>
 
 <script>
     document.getElementById("toggleCGV").addEventListener("click", function() {
         let cgvSection = document.getElementById("cgvSection");
-        if (cgvSection.style.display === "none") {
-            cgvSection.style.display = "block";
-        } else {
-            cgvSection.style.display = "none";
-        }
+        cgvSection.style.display = (cgvSection.style.display === "none" || cgvSection.style.display === "") ? "block" : "none";
     });
 </script>
 
