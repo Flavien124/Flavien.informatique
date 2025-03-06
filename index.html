@@ -104,6 +104,31 @@
         color: #004080; /* bleu foncé */
         font-weight: bold;
     }
+	/* Mode sombre automatique */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    .hours, .about, #cgvSection {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+
+    table, th, td {
+        border-color: #333333;
+    }
+
+    header, .contact-buttons a, button {
+        background-color: #27638e;
+    }
+
+    .contact-buttons a:hover, button:hover {
+        background-color: #1c4a69;
+    }
+}
+
 </style>
 </head>
 <body>
