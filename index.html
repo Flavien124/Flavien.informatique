@@ -8,87 +8,103 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#59A8DE">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #59A8DE;
-            color: white;
-            padding: 15px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 160px;
-        }
-        h1, h2 {
-            color: #59A8DE;
-        }
-        .contact-buttons a, button {
-            display: block;
-            margin: 10px;
-            padding: 10px;
-            background-color: #59A8DE;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-        }
-        .contact-buttons a:hover, button:hover {
-            background-color: #4288c3;
-        }
-        .buttons-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .hours {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background: #e8f4ff;
-            border-radius: 5px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #59A8DE;
-            color: white;
-        }
-        .about ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .buttons-install {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        #cgvSection h3 {
-            color: black;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        #cgvSection h4, #cgvSection strong {
-            color: red;
-            text-decoration: underline red;
-        }
-    </style>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #59A8DE;
+        color: white;
+        padding: 15px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 160px;
+    }
+    h1, h2 {
+        color: #59A8DE;
+    }
+    .contact-buttons a, button {
+        display: block;
+        margin: 10px;
+        padding: 10px;
+        background-color: #59A8DE;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+    }
+    .contact-buttons a:hover, button:hover {
+        background-color: #4288c3;
+    }
+    .buttons-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .hours {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background: #e8f4ff;
+        border-radius: 5px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #59A8DE;
+        color: white;
+    }
+    .about ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .buttons-install {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    #cgvSection h3 {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    #cgvSection h4, #cgvSection strong {
+        color: red;
+        text-decoration: underline red;
+    }
+
+    /* 👇 Nouveaux styles pour statut dynamique */
+    .ouvert {
+        color: green;
+        font-weight: bold;
+    }
+
+    .ferme {
+        color: red;
+        font-weight: bold;
+    }
+
+    .domicile {
+        color: #004080; /* bleu foncé */
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
 
@@ -125,6 +141,46 @@
         <tr><td>Samedi</td><td>9h00 - 12h00</td></tr>
         <tr><td>Dimanche</td><td>Fermé</td></tr>
     </table>
+	<div id="statutHoraire" style="margin-top:15px; font-size:18px; font-weight:bold;">
+    Statut : <span id="statutTexte">Chargement...</span>
+</div>
+<script>
+    function actualiserStatut() {
+        const maintenant = new Date();
+        const jour = maintenant.getDay(); // 0=dimanche, 1=lundi...
+        const heure = maintenant.getHours();
+        const minutes = maintenant.getMinutes();
+        const tempsActuel = heure * 60 + minutes;
+
+        let statutTexte = document.getElementById("statutTexte");
+        let statut = "";
+        let classe = "";
+
+        if (jour === 0 || jour === 3) { // Dimanche et mercredi
+            statut = "Fermé";
+            classe = "ferme";
+        } else if (jour === 6 && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) { // Samedi matin
+            statut = "Ouvert";
+            classe = "ouvert";
+        } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) { // Matins semaine sauf mercredi
+            statut = "Ouvert";
+            classe = "ouvert";
+        } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 12 * 60 && tempsActuel < 18 * 60) { // Après-midi en semaine
+            statut = "Intervention à domicile";
+            classe = "domicile";
+        } else {
+            statut = "Fermé";
+            classe = "ferme";
+        }
+
+        statutTexte.textContent = statut;
+        statutTexte.className = classe;
+    }
+
+    // actualiser immédiatement et chaque minute
+    actualiserStatut();
+    setInterval(actualiserStatut, 60000);
+</script>
 </div>
 
 <div class="about">
