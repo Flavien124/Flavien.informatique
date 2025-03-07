@@ -195,6 +195,30 @@
             background-color: #1c4a69;
         }
     }
+	.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button-row a {
+    flex: 1;
+    text-align: center;
+    min-width: 140px; /* Assure une bonne taille sur mobile */
+    padding: 10px;
+    background-color: #59A8DE;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-row a:hover {
+    background-color: #4288c3;
+}
+
 </style>
 </head>
 <body>
@@ -207,12 +231,20 @@
 <p>Besoin d'une réparation ou assistance pour votre matériel ? Contactez-moi !</p>
 
 <div class="contact-buttons">
-   <a href="tel:+33661576161">📞 Appeler <b>06 61 57 61 61</b></a>
-    <a href="sms:+33661576161">📩 Envoyer un SMS</a>
-<p>
-<a href="#" id="toggleForm" class="contact-link">📧 Envoyer un mail</a>
-</p>
+    <!-- Ligne 1 : Appeler & SMS -->
+    <div class="button-row">
+        <a href="tel:+33661576161">📞 Appeler <b>06 61 57 61 61</b></a>
+        <a href="sms:+33661576161">📩 Envoyer un SMS</a>
+    </div>
 
+    <!-- Ligne 2 : Envoyer un mail & Voir sur la carte -->
+    <div class="button-row">
+        <a href="#" id="toggleForm">📧 Envoyer un mail</a>
+        <a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank">📍 Voir sur la carte</a>
+    </div>
+</div>
+
+<!-- Formulaire de contact (caché par défaut) -->
 <div id="contactForm" class="contact-form" style="display: none;">
     <h3>📩 Formulaire de contact rapide</h3>
     <form action="https://formspree.io/f/xnnpadvo" method="POST">
@@ -241,6 +273,7 @@
         </table>
     </form>
 </div>
+
     <a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank">📍 Voir sur la carte</a>
     <div class="buttons-group">
         <button id="shareButton">📤 Partager cette application</button>
