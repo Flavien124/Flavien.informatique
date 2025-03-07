@@ -215,6 +215,39 @@ th, td {
         color: #59A8DE;
     }
 }
+/* ✅ Ajustement des boutons sur mobile */
+@media screen and (max-width: 768px) {
+    .buttons-table {
+        width: 90%; /* ✅ Réduit la largeur des boutons pour éviter qu'ils débordent */
+        margin: auto;
+    }
+
+    .buttons-table td {
+        padding: 5px; /* ✅ Réduit l'espacement pour éviter que les boutons soient collés */
+    }
+
+    .contact-buttons a {
+        width: 100%; /* ✅ S'assure que les boutons s'ajustent à la largeur */
+        font-size: 14px; /* ✅ Réduction de la taille du texte pour éviter les débordements */
+        padding: 10px;
+    }
+
+    .button-row {
+        display: flex;
+        flex-direction: column; /* ✅ Les boutons passent en colonne sur mobile */
+        gap: 5px;
+    }
+}
+/* ✅ Ajustement du texte du statut sur mobile */
+@media screen and (max-width: 768px) {
+    #statutHoraire {
+        font-size: 5vw; /* ✅ Augmente la taille du texte sur mobile */
+    }
+
+    #statutTexte {
+        font-size: 6vw; /* ✅ Rend le texte du statut plus visible */
+    }
+}
 </style>
 </head>
 <body>
@@ -511,6 +544,19 @@ th, td {
             form.style.display = "block";
         } else {
             form.style.display = "none";
+        }
+    });
+</script>
+<script>
+    document.getElementById("shareButton").addEventListener("click", function () {
+        if (navigator.share) {
+            navigator.share({
+                title: "Flavien Informatique",
+                text: "Découvrez les services de Flavien Informatique !",
+                url: window.location.href
+            }).catch((error) => console.log("Erreur de partage :", error));
+        } else {
+            alert("Le partage n'est pas supporté sur ce navigateur.");
         }
     });
 </script>
