@@ -9,193 +9,29 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#59A8DE">
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #ffffff;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-    }
-    header {
-        background-color: #59A8DE;
-        color: white;
-        padding: 15px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 160px;
-    }
-    h1, h2 {
-        color: #59A8DE;
-    }
-    .contact-buttons a, .contact-link {
-        display: block;
-        margin: 10px auto;
-        padding: 12px;
-        background-color: #59A8DE;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        font-weight: bold;
-        width: 220px; /* Uniformise tous les boutons */
-        font-size: 16px;
-    }
-    .contact-buttons a:hover, .contact-link:hover {
-        background-color: #4288c3;
-    }
-    .buttons-group {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-    .hours {
-        text-align: center;
-        margin-top: 20px;
-        padding: 10px;
-        background: #e8f4ff;
-        border-radius: 5px;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: center;
-    }
-    th {
-        background-color: #59A8DE;
-        color: white;
-    }
-    .about ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-    .buttons-install {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-    }
-    #cgvSection h3 {
-        color: black;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    #cgvSection h4, #cgvSection strong {
-        color: red;
-        text-decoration: underline red;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #59A8DE;
+    color: white;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+}
+h1, h2 {
+    color: #59A8DE;
+}
 
-    /* 👇 Styles pour le statut dynamique */
-    .ouvert {
-        color: green;
-        font-weight: bold;
-    }
-    .ferme {
-        color: red;
-        font-weight: bold;
-    }
-    .domicile {
-        color: #004080; /* Bleu foncé */
-        font-weight: bold;
-    }
-
-    /* ✅ Correction complète du formulaire */
-    .contact-form {
-        max-width: 550px;
-        margin: 20px auto;
-        padding: 15px;
-        background: #f2f2f2; /* Fond gris clair */
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .contact-form h3 {
-        color: #59A8DE;
-        text-align: center;
-    }
-
-    .contact-form table {
-        width: 100%;
-        max-width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed; /* Assure que les colonnes ne débordent pas */
-    }
-
-    .contact-form td {
-        padding: 10px;
-        text-align: left;
-        width: 50%;
-        word-wrap: break-word; /* Empêche le texte de dépasser */
-    }
-
-    /* ✅ Ajustement des champs pour éviter les débordements */
-    .contact-form input, .contact-form textarea {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box; /* Évite que les champs débordent */
-    }
-
-    /* ✅ Correction du bouton */
-    .contact-form button {
-        width: 100%;
-        padding: 12px;
-        background-color: #59A8DE;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 10px;
-    }
-    .contact-form button:hover {
-        background-color: #4288c3;
-    }
-
-    /* ✅ Correction du mode sombre */
-    @media (prefers-color-scheme: dark) {
-        body {
-            background-color: #121212;
-            color: #ffffff;
-        }
-        .hours, .about, #cgvSection, .contact-form {
-            background-color: #1e1e1e;
-            color: #ffffff;
-        }
-        table, th, td {
-            border-color: #333333;
-        }
-        header, .contact-buttons a, .contact-link, button {
-            background-color: #27638e;
-        }
-        .contact-buttons a:hover, .contact-link:hover, button:hover {
-            background-color: #1c4a69;
-        }
-        .contact-form input, .contact-form textarea {
-            background-color: #2a2a2a;
-            color: #ffffff;
-            border: 1px solid #555555;
-        }
-        .contact-form label {
-            color: #ffffff;
-        }
-        .contact-form button {
-            background-color: #27638e;
-        }
-        .contact-form button:hover {
-            background-color: #1c4a69;
-        }
-    }
-	.button-row {
+/* ✅ Boutons contacts alignés en lignes */
+.button-row {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -205,19 +41,133 @@
 .button-row a {
     flex: 1;
     text-align: center;
-    min-width: 140px; /* Assure une bonne taille sur mobile */
-    padding: 10px;
+    min-width: 160px;
+    padding: 12px;
     background-color: #59A8DE;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 16px;
 }
 
 .button-row a:hover {
     background-color: #4288c3;
 }
+
+/* ✅ Formulaire de contact amélioré */
+.contact-form {
+    max-width: 550px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #f2f2f2; /* Fond gris clair */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-form h3 {
+    color: #59A8DE;
+    text-align: center;
+}
+
+.contact-form table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.contact-form td {
+    padding: 10px;
+    text-align: left;
+    width: 50%;
+    word-wrap: break-word;
+}
+
+/* ✅ Ajustement des champs pour éviter les débordements */
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* ✅ Correction du bouton */
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #59A8DE;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.contact-form button:hover {
+    background-color: #4288c3;
+}
+
+/* ✅ Gestion du mode sombre */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+    .hours, .about, #cgvSection, .contact-form {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+    table, th, td {
+        border-color: #333333;
+    }
+    header, .button-row a, button {
+        background-color: #27638e;
+    }
+    .button-row a:hover, button:hover {
+        background-color: #1c4a69;
+    }
+    .contact-form input, .contact-form textarea {
+        background-color: #2a2a2a;
+        color: #ffffff;
+        border: 1px solid #555555;
+    }
+    .contact-form label {
+        color: #ffffff;
+    }
+    .contact-form button {
+        background-color: #27638e;
+    }
+    .contact-form button:hover {
+        background-color: #1c4a69;
+    }
+}
+
+/* ✅ Styles pour le statut dynamique */
+.ouvert {
+    color: green;
+    font-weight: bold;
+}
+.ferme {
+    color: red;
+    font-weight: bold;
+}
+.domicile {
+    color: #004080; /* Bleu foncé */
+    font-weight: bold;
+}
+
+/* ✅ Boutons d'installation et de partage */
+.buttons-install {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 
 </style>
 </head>
@@ -274,12 +224,21 @@
     </form>
 </div>
 
-    <a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank">📍 Voir sur la carte</a>
-    <div class="buttons-group">
-        <button id="shareButton">📤 Partager cette application</button>
-        <a href="https://g.page/r/CT8VKkToYGT3EAE/review" target="_blank">⭐ Laisser un avis</a>
-    </div>
+<!-- Boutons Partage & Avis -->
+<div class="buttons-group">
+    <button id="shareButton">📤 Partager cette application</button>
+    <a href="https://g.page/r/CT8VKkToYGT3EAE/review" target="_blank">⭐ Laisser un avis</a>
 </div>
+
+<!-- Script pour afficher/masquer le formulaire -->
+<script>
+    document.getElementById("toggleForm").addEventListener("click", function(event) {
+        event.preventDefault();
+        let form = document.getElementById("contactForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    });
+</script>
+
 
 <div class="hours">
     <h3>Horaires d'ouverture</h3>
