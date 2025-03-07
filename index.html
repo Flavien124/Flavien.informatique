@@ -202,7 +202,24 @@
         .contact-form button:hover {
             background-color: #1c4a69;
         }
-    }
+    }.contact-link {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    background-color: #59A8DE;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    width: 200px;
+    margin: 10px auto;
+}
+
+.contact-link:hover {
+    background-color: #4288c3;
+}
 </style>
 </head>
 <body>
@@ -218,7 +235,7 @@
    <a href="tel:+33661576161">📞 Appeler <b>06 61 57 61 61</b></a>
     <a href="sms:+33661576161">📩 Envoyer un SMS</a>
 <p>
-    <a href="#" id="toggleForm" style="color: #59A8DE; font-weight: bold; text-decoration: none;">📧 Envoyer un mail</a>
+<a href="#" id="toggleForm" class="contact-link">📧 Envoyer un mail</a>
 </p>
 
 <div id="contactForm" class="contact-form" style="display: none;">
