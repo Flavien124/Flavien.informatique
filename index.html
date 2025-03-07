@@ -29,34 +29,84 @@
     h1, h2 {
         color: #59A8DE;
     }
-
-    /* ✅ Boutons contacts alignés en lignes */
-    .button-row {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .button-row a {
-        flex: 1;
-        text-align: center;
-        min-width: 160px;
+    .contact-buttons a, .contact-link {
+        display: block;
+        margin: 10px auto;
         padding: 12px;
         background-color: #59A8DE;
         color: white;
         text-decoration: none;
         border-radius: 5px;
         cursor: pointer;
+        text-align: center;
         font-weight: bold;
+        width: 220px; /* Uniformise tous les boutons */
         font-size: 16px;
     }
-
-    .button-row a:hover {
+    .contact-buttons a:hover, .contact-link:hover {
         background-color: #4288c3;
     }
+    .buttons-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .hours {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background: #e8f4ff;
+        border-radius: 5px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #59A8DE;
+        color: white;
+    }
+    .about ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .buttons-install {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    #cgvSection h3 {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    #cgvSection h4, #cgvSection strong {
+        color: red;
+        text-decoration: underline red;
+    }
 
-    /* ✅ Formulaire de contact amélioré */
+    /* 👇 Styles pour le statut dynamique */
+    .ouvert {
+        color: green;
+        font-weight: bold;
+    }
+    .ferme {
+        color: red;
+        font-weight: bold;
+    }
+    .domicile {
+        color: #004080; /* Bleu foncé */
+        font-weight: bold;
+    }
+
+    /* ✅ Correction complète du formulaire */
     .contact-form {
         max-width: 550px;
         margin: 20px auto;
@@ -74,15 +124,16 @@
 
     .contact-form table {
         width: 100%;
+        max-width: 100%;
         border-collapse: collapse;
-        table-layout: fixed;
+        table-layout: fixed; /* Assure que les colonnes ne débordent pas */
     }
 
     .contact-form td {
         padding: 10px;
         text-align: left;
         width: 50%;
-        word-wrap: break-word;
+        word-wrap: break-word; /* Empêche le texte de dépasser */
     }
 
     /* ✅ Ajustement des champs pour éviter les débordements */
@@ -91,7 +142,7 @@
         padding: 8px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        box-sizing: border-box;
+        box-sizing: border-box; /* Évite que les champs débordent */
     }
 
     /* ✅ Correction du bouton */
@@ -110,7 +161,7 @@
         background-color: #4288c3;
     }
 
-    /* ✅ Gestion du mode sombre */
+    /* ✅ Correction du mode sombre */
     @media (prefers-color-scheme: dark) {
         body {
             background-color: #121212;
@@ -123,10 +174,10 @@
         table, th, td {
             border-color: #333333;
         }
-        header, .button-row a, button {
+        header, .contact-buttons a, .contact-link, button {
             background-color: #27638e;
         }
-        .button-row a:hover, button:hover {
+        .contact-buttons a:hover, .contact-link:hover, button:hover {
             background-color: #1c4a69;
         }
         .contact-form input, .contact-form textarea {
@@ -144,32 +195,6 @@
             background-color: #1c4a69;
         }
     }
-
-    /* ✅ Styles pour le statut dynamique */
-    .ouvert {
-        color: green;
-        font-weight: bold;
-        font-size: 18px;
-    }
-    .ferme {
-        color: red;
-        font-weight: bold;
-        font-size: 18px;
-    }
-    .domicile {
-        color: #004080; /* Bleu foncé */
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    /* ✅ Boutons d'installation et de partage */
-    .buttons-install {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-    }
-
 </style>
 </head>
 <body>
@@ -182,20 +207,12 @@
 <p>Besoin d'une réparation ou assistance pour votre matériel ? Contactez-moi !</p>
 
 <div class="contact-buttons">
-    <!-- Ligne 1 : Appeler & SMS -->
-    <div class="button-row">
-        <a href="tel:+33661576161">📞 Appeler <b>06 61 57 61 61</b></a>
-        <a href="sms:+33661576161">📩 Envoyer un SMS</a>
-    </div>
+   <a href="tel:+33661576161">📞 Appeler <b>06 61 57 61 61</b></a>
+    <a href="sms:+33661576161">📩 Envoyer un SMS</a>
+<p>
+<a href="#" id="toggleForm" class="contact-link">📧 Envoyer un mail</a>
+</p>
 
-    <!-- Ligne 2 : Envoyer un mail & Voir sur la carte -->
-    <div class="button-row">
-        <a href="#" id="toggleForm">📧 Envoyer un mail</a>
-        <a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank">📍 Voir sur la carte</a>
-    </div>
-</div>
-
-<!-- Formulaire de contact (caché par défaut) -->
 <div id="contactForm" class="contact-form" style="display: none;">
     <h3>📩 Formulaire de contact rapide</h3>
     <form action="https://formspree.io/f/xnnpadvo" method="POST">
@@ -224,22 +241,12 @@
         </table>
     </form>
 </div>
-
-<!-- Boutons Partage & Avis -->
-<div class="buttons-group">
-    <button id="shareButton">📤 Partager cette application</button>
-    <a href="https://g.page/r/CT8VKkToYGT3EAE/review" target="_blank">⭐ Laisser un avis</a>
+    <a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank">📍 Voir sur la carte</a>
+    <div class="buttons-group">
+        <button id="shareButton">📤 Partager cette application</button>
+        <a href="https://g.page/r/CT8VKkToYGT3EAE/review" target="_blank">⭐ Laisser un avis</a>
+    </div>
 </div>
-
-<!-- Script pour afficher/masquer le formulaire -->
-<script>
-    document.getElementById("toggleForm").addEventListener("click", function(event) {
-        event.preventDefault();
-        let form = document.getElementById("contactForm");
-        form.style.display = form.style.display === "none" ? "block" : "none";
-    });
-</script>
-
 
 <div class="hours">
     <h3>Horaires d'ouverture</h3>
