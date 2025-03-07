@@ -217,7 +217,11 @@
 <div class="contact-buttons">
    <a href="tel:+33661576161">📞 Appeler <b>06 61 57 61 61</b></a>
     <a href="sms:+33661576161">📩 Envoyer un SMS</a>
-<div class="contact-form">
+<p>
+    <a href="#" id="toggleForm" style="color: #59A8DE; font-weight: bold; text-decoration: none;">📧 Envoyer un mail</a>
+</p>
+
+<div id="contactForm" class="contact-form" style="display: none;">
     <h3>📩 Formulaire de contact rapide</h3>
     <form action="https://formspree.io/f/xnnpadvo" method="POST">
         <table>
@@ -245,7 +249,6 @@
         </table>
     </form>
 </div>
-
     <a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank">📍 Voir sur la carte</a>
     <div class="buttons-group">
         <button id="shareButton">📤 Partager cette application</button>
@@ -487,6 +490,17 @@
         cgvSection.style.display = (cgvSection.style.display === "none" || cgvSection.style.display === "") ? "block" : "none";
     });
 </script>
+<script>
+    document.getElementById("toggleForm").addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche le lien de recharger la page
+        let form = document.getElementById("contactForm");
 
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>
