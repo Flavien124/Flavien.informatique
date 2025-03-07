@@ -130,6 +130,7 @@ h1, h2 {
     .button-row a:hover, button:hover {
         background-color: #1c4a69;
     }
+<<<<<<< HEAD
     .contact-form input, .contact-form textarea {
         background-color: #2a2a2a;
         color: #ffffff;
@@ -169,6 +170,170 @@ h1, h2 {
 }
 
 
+=======
+    .buttons-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .hours {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background: #e8f4ff;
+        border-radius: 5px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #59A8DE;
+        color: white;
+    }
+    .about ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .buttons-install {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    #cgvSection h3 {
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    #cgvSection h4, #cgvSection strong {
+        color: red;
+        text-decoration: underline red;
+    }
+
+    /* 👇 Nouveaux styles pour statut dynamique */
+    .ouvert {
+        color: green;
+        font-weight: bold;
+    }
+
+    .ferme {
+        color: red;
+        font-weight: bold;
+    }
+
+    .domicile {
+        color: #004080; /* bleu foncé */
+        font-weight: bold;
+    }
+	/* Mode sombre automatique */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+
+    .hours, .about, #cgvSection {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+
+    table, th, td {
+        border-color: #333333;
+    }
+
+    header, .contact-buttons a, button {
+        background-color: #27638e;
+    }
+
+    .contact-buttons a:hover, button:hover {
+        background-color: #1c4a69;
+    }
+}
+.contact-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #f2f2f2; /* Gris clair */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-form h3 {
+    color: #59A8DE;
+    text-align: center;
+}
+
+.contact-form table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.contact-form td {
+    padding: 8px;
+    text-align: left;
+}
+
+.contact-form label {
+    font-weight: bold;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px;
+    background-color: #59A8DE;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form button:hover {
+    background-color: #4288c3;
+}
+.contact-form table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+}
+
+.contact-form td {
+    padding: 10px;
+    text-align: left;
+    width: 50%; /* Ajuste la largeur pour un bon alignement */
+}
+@media (prefers-color-scheme: dark) {
+    .contact-form {
+        background: #2a2a2a; /* Fond plus foncé pour le mode sombre */
+        color: #ffffff;
+    }
+
+    .contact-form input, .contact-form textarea {
+        background-color: #333333;
+        color: #ffffff;
+        border: 1px solid #555555;
+    }
+
+    .contact-form label {
+        color: #ffffff;
+    }
+}
+
+>>>>>>> parent of cdd8fa1 (Correction optimisation CSS)
 </style>
 </head>
 <body>
