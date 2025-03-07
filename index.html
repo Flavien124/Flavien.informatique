@@ -29,18 +29,21 @@
     h1, h2 {
         color: #59A8DE;
     }
-    .contact-buttons a, button {
+    .contact-buttons a, .contact-link {
         display: block;
-        margin: 10px;
-        padding: 10px;
+        margin: 10px auto;
+        padding: 12px;
         background-color: #59A8DE;
         color: white;
         text-decoration: none;
         border-radius: 5px;
         cursor: pointer;
-        border: none;
+        text-align: center;
+        font-weight: bold;
+        width: 220px; /* Uniformise tous les boutons */
+        font-size: 16px;
     }
-    .contact-buttons a:hover, button:hover {
+    .contact-buttons a:hover, .contact-link:hover {
         background-color: #4288c3;
     }
     .buttons-group {
@@ -94,12 +97,10 @@
         color: green;
         font-weight: bold;
     }
-
     .ferme {
         color: red;
         font-weight: bold;
     }
-
     .domicile {
         color: #004080; /* Bleu foncé */
         font-weight: bold;
@@ -156,7 +157,6 @@
         font-size: 16px;
         margin-top: 10px;
     }
-
     .contact-form button:hover {
         background-color: #4288c3;
     }
@@ -167,59 +167,34 @@
             background-color: #121212;
             color: #ffffff;
         }
-
         .hours, .about, #cgvSection, .contact-form {
             background-color: #1e1e1e;
             color: #ffffff;
         }
-
         table, th, td {
             border-color: #333333;
         }
-
-        header, .contact-buttons a, button {
+        header, .contact-buttons a, .contact-link, button {
             background-color: #27638e;
         }
-
-        .contact-buttons a:hover, button:hover {
+        .contact-buttons a:hover, .contact-link:hover, button:hover {
             background-color: #1c4a69;
         }
-
         .contact-form input, .contact-form textarea {
             background-color: #2a2a2a;
             color: #ffffff;
             border: 1px solid #555555;
         }
-
         .contact-form label {
             color: #ffffff;
         }
-
         .contact-form button {
             background-color: #27638e;
         }
-
         .contact-form button:hover {
             background-color: #1c4a69;
         }
-    }.contact-link {
-    display: block;
-    margin: 10px;
-    padding: 10px;
-    background-color: #59A8DE;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    width: 200px;
-    margin: 10px auto;
-}
-
-.contact-link:hover {
-    background-color: #4288c3;
-}
+    }
 </style>
 </head>
 <body>
