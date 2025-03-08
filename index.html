@@ -8,154 +8,368 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#59A8DE">
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
-header {
-    background-color: #59A8DE;
-    color: white;
-    padding: 15px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 160px;
-}
+        header {
+            background-color: #59A8DE;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 160px;
+        }
 
-h1, h2 {
-    color: #59A8DE;
-}
+        h1, h2 {
+            color: #59A8DE;
+        }
 
-/* ✅ Mise en page en tableau pour organiser les boutons */
-.buttons-table {
-    width: 100%;
-    max-width: 450px;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background: #e8f4ff;
-    border-radius: 5px;
-}
+        /* Tableau des boutons */
+        .buttons-table {
+            width: 100%;
+            max-width: 450px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #e8f4ff;
+            border-radius: 5px;
+        }
 
-/* ✅ Style des cellules */
-.buttons-table td {
-    padding: 8px;
-    text-align: center;
-    width: 50%;
-}
+        /* Cellules du tableau */
+        .buttons-table td {
+            padding: 8px;
+            text-align: center;
+            width: 50%;
+        }
 
-/* ✅ Uniformisation des boutons */
-.contact-buttons a, .contact-link {
-    display: block;
-    padding: 12px;
-    background-color: #59A8DE;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s ease-in-out;
-    width: 220px;
-    margin: auto;
-}
+        /* Boutons de contact */
+        .contact-buttons a, .contact-link {
+            display: block;
+            padding: 12px;
+            background-color: #59A8DE;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+            width: 220px;
+            margin: auto;
+        }
 
-/* ✅ Effet au survol */
-.contact-buttons a:hover, .contact-link:hover {
-    background-color: #4288c3;
-}
+        /* Effet au survol */
+        .contact-buttons a:hover, .contact-link:hover {
+            background-color: #4288c3;
+        }
 
-/* ✅ Restauration du formulaire clair */
-.contact-form {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 15px;
-    background: #f2f2f2;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    display: none;
-}
+        /* Formulaire de contact */
+        .contact-form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #f2f2f2;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
 
-/* ✅ Suppression du fond bleu clair sur toute la section horaires */
-.hours {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-}
+        /* Section des horaires */
+        .hours {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
 
-/* ✅ Titre du tableau des horaires en noir */
-.hours h3 {
-    color: #000000;
-    font-weight: bold;
-}
+        .hours h3 {
+            color: #000000;
+            font-weight: bold;
+        }
 
-/* ✅ Style du tableau des horaires */
-.hours table {
-    width: 100%;
-    max-width: 500px; /* ✅ Correspond maintenant au tableau de contact */
-    margin: 10px auto;
-    border-collapse: collapse;
-    background: #e8f4ff; /* ✅ Fond bleu clair uniquement sur le tableau */
-    border-radius: 5px;
-}
+        /* Tableau des horaires */
+        .hours table {
+            width: 100%;
+            max-width: 500px;
+            margin: 10px auto;
+            border-collapse: collapse;
+            background: #e8f4ff;
+            border-radius: 5px;
+        }
 
-/* ✅ Titres du tableau (Jour & Horaires) */
-.hours th {
-    background: #59A8DE;
-    color: white;
-    padding: 10px;
-    font-weight: bold;
-}
+        .hours th {
+            background: #59A8DE;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
 
-/* ✅ Contenu des jours et horaires */
-.hours td {
-    background: #e8f4ff;
-    color: black;
-    padding: 10px;
-    border: 1px solid #cccccc;
-}
+        .hours td {
+            background: #e8f4ff;
+            color: black;
+            padding: 10px;
+            border: 1px solid #cccccc;
+        }
 
-/* ✅ Ajustement de la largeur des colonnes */
-.hours th:first-child, 
-.hours td:first-child {
-    width: 30%; /* ✅ Réduction de la colonne Jour */
-}
+        /* Statut dynamique */
+        .ouvert {
+            color: green;
+            font-weight: bold;
+        }
+        .ferme {
+            color: red;
+            font-weight: bold;
+        }
+        .domicile {
+            color: #004080;
+            font-weight: bold;
+        }
 
-.hours th:last-child, 
-.hours td:last-child {
-    width: 70%; /* ✅ Agrandissement de la colonne Horaires */
-}
+        /* Mode sombre */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #ffffff;
+            }
+            .contact-form, .buttons-table, .hours table {
+                background-color: #1e1e1e;
+                color: #ffffff;
+            }
+            .contact-buttons a, .contact-link {
+                background-color: #27638e;
+            }
+            .contact-buttons a:hover, .contact-link:hover {
+                background-color: #1c4a69;
+            }
+            .hours table {
+                background: #2a2a2a;
+            }
+            .hours th {
+                background: #27638e;
+                color: white;
+            }
+            .hours td {
+                background: #1e1e1e;
+                color: white;
+            }
+            .hours h3 {
+                color: #59A8DE;
+            }
+        }
 
-/* ✅ Styles pour le statut dynamique */
-.ouvert {
-    color: green;
-    font-weight: bold;
-}
-.ferme {
-    color: red;
-    font-weight: bold;
-}
-.domicile {
-    color: #004080;
-    font-weight: bold;
-}
+        /* Ajustements pour mobile */
+        @media screen and (max-width: 768px) {
+            .buttons-table {
+                width: 90%;
+                margin: auto;
+            }
 
-/* ✅ Correction des tableaux */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
+            .buttons-table td {
+                display: block;
+                width: 100%;
+                padding: 5px;
+            }
 
-th, td {
+            .contact-buttons a {
+                width: 100%;
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .contact-form table {
+                width: 100%;
+            }
+
+            .contact-form td {
+                display: block;
+                width: 100%;
+            }
+
+            #statutHoraire {
+                font-size: 6vw;
+            }
+
+            #statutTexte {
+                font-size: 5vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="icon-512x512.png" alt="Logo" style="width: 175px; height: auto; margin-top: 15px;">
+</header>
+
+<h2>Réparation et Assistance Informatique</h2>
+<p>Besoin d'une réparation ou assistance pour votre matériel ? Contactez-moi !</p>
+
+<table class="buttons-table">
+    <tr>
+        <td><a href="tel:+33661576161" class="contact-link">📞 Appeler <b>06 61 57 61 61</b></a></td>
+        <td><a href="sms:+33661576161" class="contact-link">📩 Envoyer un SMS</a></td>
+    </tr>
+    <tr>
+        <td><a href="#" id="toggleForm" class="contact-link">📧 Envoyer un mail</a></td>
+        <td><a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank" class="contact-link">📍 Voir sur la carte</a></td>
+    </tr>
+    <tr>
+        <td><a href="#" id="shareButton" class="contact-link">📤 Partager cette page</a></td>
+        <td><a href="https://g.page/r/CT8VKkToYGT3EAE/review" target="_blank" class="contact-link">⭐ Laisser un avis</a></td>
+    </tr>
+</table>
+
+<!-- Formulaire de contact -->
+<div id="contactForm" class="contact-form" style="display: none;">
+    <h3>📩 Formulaire de contact rapide</h3>
+    <form action="https://formspree.io/f/xnnpadvo" method="POST">
+        <table>
+            <tr>
+                <td><label for="nom">Nom :</label></td>
+                <td><input type="text" id="nom" name="nom" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">E-mail :</label></td>
+                <td><input type="email" id="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td><label for="telephone">Numéro de téléphone :</label></td>
+                <td><input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" placeholder="06XXXXXXXX" required></td>
+            </tr>
+            <tr>
+                <td><label for="message">Message :</label></td>
+                <td><textarea id="message" name="message" rows="4" required></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">📨 Envoyer</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<!-- Section des horaires -->
+<div class="hours">
+    <div id="statutHoraire" style="margin-top:15px; font-size:25px; font-weight:bold;">
+        Actuellement : <span id="statutTexte">Chargement...</span>
+    </div>
+
+    <table>
+        <tr>
+            <th>Jour</th>
+            <th>Horaires</th>
+        </tr>
+        <tr><td>Lundi</td><td>9h00 - 12h00 / Après-midi sur rendez-vous à domicile</td></tr>
+        <tr><td>Mardi</td><td>9h00 - 12h00 / Après-midi sur rendez-vous à domicile</td></tr>
+        <tr><td>Mercredi</td><td>Fermé</td></tr>
+        <tr><td>Jeudi</td><td>9h00 - 12h00 / Après-midi sur rendez-vous à domicile</td></tr>
+        <tr><td>Vendredi</td><td>9h00 - 12h00 / Après-midi sur rendez-vous à domicile</td></tr>
+        <tr><td>Samedi</td><td>9h00 - 12h00</td></tr>
+        <tr><td>Dimanche</td><td>Fermé</td></tr>
+    </table>
+
+    <script>
+        function actualiserStatut() {
+            const maintenant = new Date();
+            const jour = maintenant.getDay();
+            const heure = maintenant.getHours();
+            const minutes = maintenant.getMinutes();
+            const tempsActuel = heure * 60 + minutes;
+
+            let statutTexte = document.getElementById("statutTexte");
+            let statut = "";
+            let classe = "";
+
+            if (jour === 0 || jour === 3) {
+                statut = "Fermé";
+                classe = "ferme";
+            } else if (jour === 6 && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) {
+                statut = "Ouvert";
+                classe = "ouvert";
+            } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 9 * 60 && tempsActuel < 12 * 60) {
+                statut = "Ouvert";
+                classe = "ouvert";
+            } else if ((jour === 1 || jour === 2 || jour === 4 || jour === 5) && tempsActuel >= 12 * 60 && tempsActuel < 18 * 60) {
+                statut = "Intervention à domicile";
+                classe = "domicile";
+            } else {
+                statut = "Fermé";
+                classe = "ferme";
+            }
+
+            statutTexte.textContent = statut;
+            statutTexte.className = classe;
+        }
+
+        actualiserStatut();
+        setInterval(actualiserStatut, 60000);
+    </script>
+</div>
+
+<!-- Section À propos -->
+<div class="about">
+    <h3>Réparation et assistance informatique un service fiable et efficace</h3>
+    <p>Besoin d’une solution rapide et efficace pour votre ordinateur ou votre téléphone ? Avec plusieurs années d’expérience en dépannage, maintenance et reconditionnement, je vous propose un service personnalisé, adapté aux particuliers comme aux professionnels.</p>
+    <p><strong>Ce que je propose :</strong></p>
+    <ul>
+        <li>✔ Dépannage matériel et logiciel : remplacement de composants, installation de SSD, suppression de virus…</li>
+        <li>✔ Assistance et conseils : un accompagnement clair, sans jargon technique.</li>
+        <li>✔ Reconditionnement d’appareils : une alternative économique et écologique.</li>
+        <li>✔ Location d’appareils : restez opérationnel même en cas de panne.</li>
+    </ul>
+</div>
+
+<!-- Section CGV -->
+<div id="cgvSection" style="display:none;">
+    <h3>Conditions Générales de Vente</h3>
+    <p><strong>PRÉAMBULE :</strong><br>
+    Ces présentes conditions générales de vente font référence aux prestations de l’auto-entreprise Flavien Informatique, représentée par Monsieur BEAUCE Flavien.<br>
+    Toute commande auprès de Flavien Informatique est subordonnée à l’adhésion du CLIENT aux présentes Conditions Générales.</p>
+    <!-- ... (reste du contenu CGV) ... -->
+</div>
+
+<!-- Boutons d'installation et CGV -->
+<div class="buttons-install">
+    <button id="toggleCGV">📜 Conditions Générales de Vente</button>
+    <button id="installButton">➕ Ajouter à l'écran d'accueil</button>
+</div>
+
+<script>
+    document.getElementById("toggleCGV").addEventListener("click", function() {
+        let cgvSection = document.getElementById("cgvSection");
+        cgvSection.style.display = (cgvSection.style.display === "none" || cgvSection.style.display === "") ? "block" : "none";
+    });
+
+    document.getElementById("toggleForm").addEventListener("click", function(event) {
+        event.preventDefault();
+        let form = document.getElementById("contactForm");
+        form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+    });
+
+    document.getElementById("shareButton").addEventListener("click", function () {
+        if (navigator.share) {
+            navigator.share({
+                title: "Flavien Informatique",
+                text: "Découvrez les services de Flavien Informatique !",
+                url: window.location.href
+            }).catch((error) => console.log("Erreur de partage :", error));
+        } else {
+            alert("Le partage n'est pas supporté sur ce navigateur.");
+        }
+    });
+</script>
+</body>
+</html>
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
@@ -539,26 +753,4 @@ th, td {
     document.getElementById("toggleForm").addEventListener("click", function(event) {
         event.preventDefault(); // Empêche le lien de recharger la page
         let form = document.getElementById("contactForm");
-
-        if (form.style.display === "none") {
-            form.style.display = "block";
-        } else {
-            form.style.display = "none";
-        }
-    });
-</script>
-<script>
-    document.getElementById("shareButton").addEventListener("click", function () {
-        if (navigator.share) {
-            navigator.share({
-                title: "Flavien Informatique",
-                text: "Découvrez les services de Flavien Informatique !",
-                url: window.location.href
-            }).catch((error) => console.log("Erreur de partage :", error));
-        } else {
-            alert("Le partage n'est pas supporté sur ce navigateur.");
-        }
-    });
-</script>
-</body>
-</html>
+=
