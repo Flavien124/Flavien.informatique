@@ -330,7 +330,8 @@
 </div>
 
 <!-- Section CGV -->
-<h3>Conditions Générales de Vente</h3>
+<div id="cgvSection" style="display:none;">
+    <h3>Conditions Générales de Vente</h3>
     <p><strong>PRÉAMBULE :</strong><br>
     Ces présentes conditions générales de vente font référence aux prestations de l’auto-entreprise Flavien Informatique, représentée par Monsieur BEAUCE Flavien.<br>
     Toute commande auprès de Flavien Informatique est subordonnée à l’adhésion du CLIENT aux présentes Conditions Générales.</p>
@@ -486,7 +487,6 @@
         En cas de litige, sera privilégiée la négociation dans un esprit de loyauté et de bonne foi en vue de parvenir à un accord amiable lors de la survenance de tout conflit relatif au présent contrat.
     </p>
 </div>
-
 <!-- Boutons d'installation et CGV -->
 <div class="buttons-install">
     <button id="toggleCGV">📜 Conditions Générales de Vente</button>
@@ -494,18 +494,20 @@
 </div>
 
 <script>
+    // Script pour afficher/masquer les CGV
     document.getElementById("toggleCGV").addEventListener("click", function() {
         let cgvSection = document.getElementById("cgvSection");
         cgvSection.style.display = (cgvSection.style.display === "none" || cgvSection.style.display === "") ? "block" : "none";
     });
-</script>
 
+    // Script pour afficher/masquer le formulaire de contact
     document.getElementById("toggleForm").addEventListener("click", function(event) {
         event.preventDefault();
         let form = document.getElementById("contactForm");
         form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
     });
 
+    // Script pour le partage de la page
     document.getElementById("shareButton").addEventListener("click", function () {
         if (navigator.share) {
             navigator.share({
