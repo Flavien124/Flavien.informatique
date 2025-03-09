@@ -249,7 +249,7 @@
     </tr>
     <tr>
         <td><a href="#" id="toggleForm" class="contact-link">📧 Envoyer un mail</a></td>
-        <td><a href="https://www.google.com/maps?q=14+Rue+de+l'Image,+72800+Le+Lude" target="_blank" class="contact-link">📍 Voir sur la carte</a></td>
+        <td><a href="#" id="openDirections" class="contact-link">📍 Itinéraire</a></td>
     </tr>
     <tr>
         <td><a href="#" id="shareButton" class="contact-link">📤 Partager cette page</a></td>
@@ -576,6 +576,22 @@ document.getElementById('installButton').addEventListener('click', () => {
         });
     }
 });
+document.getElementById("openDirections").addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+
+        // Adresse de destination
+        const destination = "14 Rue de l'Image, 72800 Le Lude";
+
+        // Détecter si l'utilisateur est sur un appareil Apple
+        const isAppleDevice = /iPad|iPhone|iPod|Mac/.test(navigator.userAgent) && !window.MSStream;
+
+        // Rediriger vers Apple Maps ou Google Maps
+        if (isAppleDevice) {
+            window.open(`http://maps.apple.com/?daddr=${encodeURIComponent(destination)}`, "_blank");
+        } else {
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`, "_blank");
+        }
+    });
 </script>
 </body>
 </html>
