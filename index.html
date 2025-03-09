@@ -536,6 +536,33 @@
             alert("Le partage n'est pas supporté sur ce navigateur.");
         }
     });
+    let deferredPrompt; // Variable pour stocker l'événement d'installation
+
+window.addEventListener('beforeinstallprompt', (event) => {
+    // Empêche l'affichage automatique de l'invite d'installation
+    event.preventDefault();
+    // Stocke l'événement pour l'utiliser plus tard
+    deferredPrompt = event;
+    // Affiche le bouton "Ajouter à l'écran d'accueil"
+    document.getElementById('installButton').style.display = 'block';
+});
+
+document.getElementById('installButton').addEventListener('click', () => {
+    // Affiche l'invite d'installation
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        // Attend que l'utilisateur réponde à l'invite
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('L\'utilisateur a accepté l\'installation');
+            } else {
+                console.log('L\'utilisateur a refusé l\'installation');
+            }
+            // Réinitialise la variable
+            deferredPrompt = null;
+        });
+    }
+});
 </script>
 </body>
 </html>
