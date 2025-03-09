@@ -507,7 +507,7 @@
 <!-- Boutons d'installation et CGV -->
 <div class="buttons-install">
     <button id="toggleCGV">📜 Conditions Générales de Vente</button>
-	<button id="installButton">➕ Ajouter à l'écran d'accueil</button>
+	<button id="install-btn" style="display: none;">➕ Ajouter à l'écran d'accueil</button>
 </div>
 
 <script>
@@ -571,6 +571,47 @@
         console.log("L'application est déjà installée !");
         document.getElementById("install-btn").style.display = "none"; // Cache le bouton si l'application est déjà installée
     });
+document.addEventListener("DOMContentLoaded", () => {
+    let installButton = document.getElementById("install-btn");
+
+    if (!installButton) {
+        console.log("❌ Erreur : Bouton install-btn inexistant dans le HTML !");
+        return;
+    }
+
+    console.log("✅ Bouton trouvé !");
+
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+        console.log("✅ Événement beforeinstallprompt détecté !");
+        event.preventDefault();
+        deferredPrompt = event;
+        installButton.style.display = "block"; // Afficher le bouton
+    });
+
+    installButton.addEventListener('click', () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log("✅ L'application a été ajoutée à l'écran d'accueil !");
+                    installButton.style.display = "none";
+                } else {
+                    console.log("❌ L'utilisateur a annulé.");
+                }
+                deferredPrompt = null;
+            });
+        } else {
+            alert("L'ajout à l'écran d'accueil n'est pas disponible.");
+        }
+    });
+
+    window.addEventListener('appinstalled', () => {
+        console.log("📌 L'application est déjà installée !");
+        installButton.style.display = "none";
+    });
+});
 </script>
 </body>
 </html>
