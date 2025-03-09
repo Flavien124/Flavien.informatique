@@ -514,53 +514,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("✅ DOM chargé !");
 
-    let installButton = document.getElementById("install-btn");
-
-    if (!installButton) {
-        console.log("❌ Erreur : Bouton install-btn inexistant dans le HTML !");
-        return;
-    }
-
-    console.log("✅ Bouton install-btn trouvé !");
-
-    let deferredPrompt;
-
-    // Vérification si la PWA peut être installée
-    window.addEventListener('beforeinstallprompt', (event) => {
-        console.log("✅ Événement beforeinstallprompt détecté !");
-        event.preventDefault();
-        deferredPrompt = event;
-        installButton.style.display = "block"; // Afficher le bouton
-    });
-
-    // Clic sur le bouton pour afficher la boîte de dialogue d'installation
-    installButton.addEventListener('click', () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log("✅ L'application a été ajoutée à l'écran d'accueil !");
-                    installButton.style.display = "none"; // Cacher le bouton après installation
-                } else {
-                    console.log("❌ L'utilisateur a annulé.");
-                }
-                deferredPrompt = null;
-            });
-        } else {
-            alert("L'ajout à l'écran d'accueil n'est pas disponible.");
-        }
-    });
-
-    // Vérification si la PWA est déjà installée
-    window.addEventListener('appinstalled', () => {
-        console.log("📌 L'application est déjà installée !");
-        installButton.style.display = "none";
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("✅ DOM chargé !");
-    
     // Vérification et gestion du bouton des CGV
     let toggleCGV = document.getElementById("toggleCGV");
     if (toggleCGV) {
