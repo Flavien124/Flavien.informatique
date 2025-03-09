@@ -49,22 +49,111 @@
             width: 50%;
         }
 
-        /* Boutons de contact */
-        .contact-buttons a, .contact-link {
-            display: block;
-            padding: 12px;
-            background-color: #59A8DE;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            font-weight: bold;
-            font-size: 16px;
-            transition: background-color 0.3s ease-in-out;
-            width: 220px;
-            margin: auto;
-        }
+      /* Formulaire de contact */
+.contact-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.contact-form.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-form input, .contact-form textarea {
+    border: 1px solid #59A8DE;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #4288c3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(66, 136, 195, 0.5);
+}
+
+.contact-form button {
+    background-color: #59A8DE;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #4288c3;
+}
+
+/* Message de confirmation */
+#formMessage {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: none;
+}
+
+#formMessage.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#formMessage.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+    .contact-form {
+        background-color: #1e1e1e;
+        color: #ffffff;
+    }
+    .contact-form label {
+        color: #ffffff;
+    }
+    .contact-form input, .contact-form textarea {
+        background-color: #2a2a2a;
+        color: #ffffff;
+        border-color: #59A8DE;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+        border-color: #4288c3;
+    }
+    .contact-form button {
+        background-color: #27638e;
+    }
+    .contact-form button:hover {
+        background-color: #1c4a69;
+    }
+}
 
         /* Effet au survol */
         .contact-buttons a:hover, .contact-link:hover {
@@ -257,7 +346,6 @@
     </tr>
 </table>
 
-<!-- Formulaire de contact -->
 <div id="contactForm" class="contact-form" style="display: none;">
     <h3>📩 Formulaire de contact rapide</h3>
     <form action="https://formspree.io/f/xnnpadvo" method="POST">
@@ -285,6 +373,7 @@
             </tr>
         </table>
     </form>
+    <div id="formMessage"></div> <!-- Message de confirmation ou d'erreur -->
 </div>
 
 <!-- Section des horaires -->
@@ -592,6 +681,42 @@ document.getElementById("openDirections").addEventListener("click", function(eve
             window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`, "_blank");
         }
     });
+    // Afficher/masquer le formulaire avec animation
+document.getElementById("toggleForm").addEventListener("click", function(event) {
+    event.preventDefault();
+    let form = document.getElementById("contactForm");
+    form.classList.toggle("active");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+});
+
+// Gérer la soumission du formulaire
+document.querySelector(".contact-form form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Empêche la soumission par défaut
+
+    // Simuler une soumission réussie (remplace cela par ton code de soumission réel)
+    setTimeout(function() {
+        // Afficher un message de succès
+        let message = document.getElementById("formMessage");
+        message.textContent = "Message envoyé avec succès !";
+        message.classList.remove("error");
+        message.classList.add("success");
+        message.style.display = "block";
+
+        // Vider les champs du formulaire
+        document.getElementById("nom").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("telephone").value = "";
+        document.getElementById("message").value = "";
+
+        // Masquer le formulaire après 3 secondes
+        setTimeout(function() {
+            let form = document.getElementById("contactForm");
+            form.classList.remove("active");
+            form.style.display = "none";
+            message.style.display = "none";
+        }, 3000); // 3 secondes
+    }, 1000); // Simule un délai de traitement de 1 seconde
+});
 </script>
 </body>
 </html>
