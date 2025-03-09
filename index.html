@@ -507,10 +507,11 @@
 <!-- Boutons d'installation et CGV -->
 <div class="buttons-install">
     <button id="toggleCGV">📜 Conditions Générales de Vente</button>
-    <button id="installButton">➕ Ajouter à l'écran d'accueil</button>
+	<button id="installButton">➕ Ajouter à l'écran d'accueil</button>
 </div>
 
 <script>
+
     // Script pour afficher/masquer les CGV
     document.getElementById("toggleCGV").addEventListener("click", function() {
         let cgvSection = document.getElementById("cgvSection");
@@ -535,6 +536,40 @@
         } else {
             alert("Le partage n'est pas supporté sur ce navigateur.");
         }
+    });
+	
+    let deferredPrompt;
+
+    // Écoute l'événement 'beforeinstallprompt' (Chrome, Edge, Android)
+    window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault(); // Empêche l'affichage automatique de Chrome
+        deferredPrompt = event; // Stocke l'événement pour plus tard
+        document.getElementById("install-btn").style.display = "block"; // Affiche le bouton
+    });
+
+    // Ajoute un gestionnaire d'événement pour le bouton
+    document.getElementById("install-btn").addEventListener('click', () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt(); // Ouvre la boîte de dialogue d'installation
+
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log("L'application a été ajoutée à l'écran d'accueil !");
+                    document.getElementById("install-btn").style.display = "none"; // Cache le bouton après installation
+                } else {
+                    console.log("L'utilisateur a annulé.");
+                }
+                deferredPrompt = null;
+            });
+        } else {
+            alert("L'ajout à l'écran d'accueil n'est pas disponible.");
+        }
+    });
+
+    // Vérifier si la PWA est déjà installée
+    window.addEventListener('appinstalled', () => {
+        console.log("L'application est déjà installée !");
+        document.getElementById("install-btn").style.display = "none"; // Cache le bouton si l'application est déjà installée
     });
 </script>
 </body>
