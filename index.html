@@ -507,95 +507,35 @@
 <!-- Boutons d'installation et CGV -->
 <div class="buttons-install">
     <button id="toggleCGV">📜 Conditions Générales de Vente</button>
-    <button id="install-btn" style="display: none;">➕ Ajouter à l'écran d'accueil</button>
+    <button id="installButton">➕ Ajouter à l'écran d'accueil</button>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("✅ DOM chargé !");
-
-    // Vérification et gestion du bouton des CGV
-    let toggleCGV = document.getElementById("toggleCGV");
-    if (toggleCGV) {
-        toggleCGV.addEventListener("click", function() {
-            let cgvSection = document.getElementById("cgvSection");
-            if (cgvSection) {
-                cgvSection.style.display = (cgvSection.style.display === "none" || cgvSection.style.display === "") ? "block" : "none";
-            }
-        });
-    }
-
-    // Vérification et gestion du formulaire de contact
-    let toggleForm = document.getElementById("toggleForm");
-    if (toggleForm) {
-        toggleForm.addEventListener("click", function(event) {
-            event.preventDefault();
-            let form = document.getElementById("contactForm");
-            if (form) {
-                form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
-            }
-        });
-    }
-
-    // Gestion du partage de la page
-    let shareButton = document.getElementById("shareButton");
-    if (shareButton) {
-        shareButton.addEventListener("click", function () {
-            if (navigator.share) {
-                navigator.share({
-                    title: "Flavien Informatique",
-                    text: "Découvrez les services de Flavien Informatique !",
-                    url: window.location.href
-                }).catch((error) => console.log("Erreur de partage :", error));
-            } else {
-                alert("Le partage n'est pas supporté sur ce navigateur.");
-            }
-        });
-    }
-
-    // Gestion du bouton "Ajouter à l'écran d'accueil"
-    let installButton = document.getElementById("install-btn");
-    let deferredPrompt;
-
-    if (!installButton) {
-        console.log("❌ Erreur : Bouton install-btn inexistant dans le HTML !");
-        return;
-    }
-
-    console.log("✅ Bouton install-btn trouvé !");
-
-    // Détection de l'événement beforeinstallprompt (PWA)
-    window.addEventListener('beforeinstallprompt', (event) => {
-        console.log("✅ Événement beforeinstallprompt détecté !");
-        event.preventDefault();
-        deferredPrompt = event;
-        installButton.style.display = "block"; // Afficher le bouton
+    // Script pour afficher/masquer les CGV
+    document.getElementById("toggleCGV").addEventListener("click", function() {
+        let cgvSection = document.getElementById("cgvSection");
+        cgvSection.style.display = (cgvSection.style.display === "none" || cgvSection.style.display === "") ? "block" : "none";
     });
 
-    // Clic sur le bouton d'installation
-    installButton.addEventListener('click', () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log("✅ L'application a été ajoutée à l'écran d'accueil !");
-                    installButton.style.display = "none"; // Masquer le bouton après installation
-                } else {
-                    console.log("❌ L'utilisateur a annulé.");
-                }
-                deferredPrompt = null;
-            });
+    // Script pour afficher/masquer le formulaire de contact
+    document.getElementById("toggleForm").addEventListener("click", function(event) {
+        event.preventDefault();
+        let form = document.getElementById("contactForm");
+        form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+    });
+
+    // Script pour le partage de la page
+    document.getElementById("shareButton").addEventListener("click", function () {
+        if (navigator.share) {
+            navigator.share({
+                title: "Flavien Informatique",
+                text: "Découvrez les services de Flavien Informatique !",
+                url: window.location.href
+            }).catch((error) => console.log("Erreur de partage :", error));
         } else {
-            alert("L'ajout à l'écran d'accueil n'est pas disponible.");
+            alert("Le partage n'est pas supporté sur ce navigateur.");
         }
     });
-
-    // Vérifier si la PWA est déjà installée
-    window.addEventListener('appinstalled', () => {
-        console.log("📌 L'application est déjà installée !");
-        installButton.style.display = "none";
-    });
-});
 </script>
 </body>
 </html>
